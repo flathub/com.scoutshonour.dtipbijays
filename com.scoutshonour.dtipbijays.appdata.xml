@@ -27,7 +27,14 @@
     <category>Game</category>
     <category>AdventureGame</category>
   </categories>
-
+  <content_rating type="oars-1.1">
+    <content_attribute id="sex-nudity">intense</content_attribute>
+    <content_attribute id="sex-themes">moderate</content_attribute>
+    <content_attribute id="sex-homosexuality">mild</content_attribute>
+    <content_attribute id="sex-appearance">intense</content_attribute>
+    <content_attribute id="language-profanity">mild</content_attribute>
+    <content_attribute id="language-humor">intense</content_attribute>
+  </content_rating>
   <screenshots>
     <screenshot type="default">
       <image type="source">http://scoutshonour.com/donttakeitpersonallybabeitjustaintyourstory/screenshot3.jpg</image>
