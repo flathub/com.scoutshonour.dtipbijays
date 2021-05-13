@@ -17,8 +17,8 @@ finish-args:
   - --filesystem=~/.renpy:create
 
 build-options:
-  - env:
-    - PREFIX": /app
+  env:
+    PREFIX: /app
 
 modules:
   - shared-modules/glew/glew.json
