@@ -21,7 +21,7 @@
     </p>
   </description>
 
-​  <launchable type="desktop-id">com.scoutshonour.dtipbijays.desktop</launchable>
+  <launchable type="desktop-id">com.scoutshonour.dtipbijays.desktop</launchable>
   <releases>
     <release version="1.0" date="2011-04-01" />
   </releases>
@@ -33,8 +33,6 @@
   <content_rating type="oars-1.1">
     <content_attribute id="sex-nudity">intense</content_attribute>
     <content_attribute id="sex-themes">moderate</content_attribute>
-    <content_attribute id="sex-homosexuality">mild</content_attribute>
-    <content_attribute id="sex-appearance">intense</content_attribute>
     <content_attribute id="language-profanity">mild</content_attribute>
     <content_attribute id="language-humor">intense</content_attribute>
   </content_rating>
