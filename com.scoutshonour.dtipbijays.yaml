@@ -24,7 +24,7 @@ modules:
   - shared-modules/glew/glew.json
   - shared-modules/glu/glu-9.json
   - shared-modules/python2.7/python-2.7.json
-  - pygame/pygame-1.9.6.json
+  - shared-modules/pygame/pygame-1.9.6.json
 
   - name: ffmpeg-avresample
     cleanup:
