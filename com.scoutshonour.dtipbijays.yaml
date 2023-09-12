@@ -41,7 +41,10 @@ modules:
   - name: ffmpeg-avresample
     cleanup:
       - /lib/pkgconfig
-      - /share/ffmpeg/examples
+      - /include
+      - /share/doc
+      - /share/ffmpeg
+      - /share/man
     config-opts:
       - --enable-shared
       - --disable-static
