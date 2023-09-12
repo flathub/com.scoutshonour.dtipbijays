@@ -24,6 +24,18 @@ modules:
   - shared-modules/glew/glew.json
   - shared-modules/glu/glu-9.json
   - shared-modules/python2.7/python-2.7.json
+
+  - name: python3-cython
+    buildsystem: simple
+    build-commands:
+      - pip2 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "cython" --no-build-isolation
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/3f/d6/9eed523aeaca42acbaa3e6d3850edae780dc7f8da9df1bf6a2ceb851839c/Cython-0.29.36-py2.py3-none-any.whl
+        sha256: 95bb13d8be507425d03ebe051f90d4b2a9fdccc64e4f30b35645fdb7542742eb
+    cleanup:
+    - '*'
+
   - shared-modules/pygame/pygame-1.9.6.json
 
   - name: ffmpeg-avresample
@@ -31,7 +43,6 @@ modules:
       - /lib/pkgconfig
       - /share/ffmpeg/examples
     config-opts:
-      - --disable-all
       - --enable-shared
       - --disable-static
       - --enable-gnutls
@@ -40,6 +51,8 @@ modules:
       - type: archive
         url: https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
         sha256: cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
+      - type: patch
+        path: ffmpeg-binutils.patch
 
   - name: renpy
     buildsystem: simple
