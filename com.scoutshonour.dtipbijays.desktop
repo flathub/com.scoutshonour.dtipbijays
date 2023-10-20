@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Application
-Version=1.1
+Version=1.5
 Name=don't take it personally, babe, it just ain't your story
 Exec=dtipb.sh
 Icon=com.scoutshonour.dtipbijays
-Categories=Game;AdventureGame
+Categories=Game;AdventureGame;
+Keywords=dtipbijays
+PrefersNonDefaultGPU=true
