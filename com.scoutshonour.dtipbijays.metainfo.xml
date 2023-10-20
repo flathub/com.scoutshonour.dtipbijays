@@ -22,20 +22,7 @@
   </description>
 
   <launchable type="desktop-id">com.scoutshonour.dtipbijays.desktop</launchable>
-  <releases>
-    <release version="1.0" date="2011-04-01" />
-  </releases>
 
-  <categories>
-    <category>Game</category>
-    <category>AdventureGame</category>
-  </categories>
-  <content_rating type="oars-1.1">
-    <content_attribute id="sex-nudity">intense</content_attribute>
-    <content_attribute id="sex-themes">moderate</content_attribute>
-    <content_attribute id="language-profanity">mild</content_attribute>
-    <content_attribute id="language-humor">intense</content_attribute>
-  </content_rating>
   <screenshots>
     <screenshot type="default">
       <image type="source">http://scoutshonour.com/donttakeitpersonallybabeitjustaintyourstory/screenshot3.jpg</image>
@@ -48,6 +35,28 @@
     </screenshot>
   </screenshots>
 
+  <requires>
+    <internet>offline-only</internet>
+  </requires>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </recommends>
+
+  <releases>
+    <release version="1.1" date="2011-04-04" />
+  </releases>
+
+  <content_rating type="oars-1.1">
+    <content_attribute id="sex-nudity">intense</content_attribute>
+    <content_attribute id="sex-themes">moderate</content_attribute>
+    <content_attribute id="language-profanity">mild</content_attribute>
+    <content_attribute id="language-humor">intense</content_attribute>
+  </content_rating>
+
   <url type="homepage">http://scoutshonour.com/donttakeitpersonallybabeitjustaintyourstory/</url>
+  <url type="contact">https://loveconquersallgam.es/</url>
+  
   <developer_name>Christine Love</developer_name>
+
 </component>
