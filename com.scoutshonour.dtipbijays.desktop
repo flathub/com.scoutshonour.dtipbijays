@@ -2,8 +2,7 @@
 Type=Application
 Version=1.5
 Name=don't take it personally, babe, it just ain't your story
-Exec=dtipb.sh
 Icon=com.scoutshonour.dtipbijays
+Exec=dtipb.sh
 Categories=Game;AdventureGame;
-Keywords=dtipbijays
-PrefersNonDefaultGPU=true
+Keywords=dtipbijays;
