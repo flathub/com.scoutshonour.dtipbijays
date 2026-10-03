@@ -1,0 +1,13 @@
+error: passing argument 3 of ‘__glewShaderSourceARB’ from incompatible pointer type
+
+--- module/gen/renpy.gl.glenviron_shader.c.orig	2014-07-19 00:56:36.000000000 -0300
++++ module/gen/renpy.gl.glenviron_shader.c
+@@ -1575,7 +1575,7 @@
+  *     glCompileShaderARB(handle)
+  * 
+  */
+-  glShaderSourceARB(__pyx_v_handle, 1, ((GLcharARB **)(&__pyx_v_sourceptr)), (&__pyx_v_lensource));
++  glShaderSourceARB(__pyx_v_handle, 1, ((const GLcharARB **)(&__pyx_v_sourceptr)), (&__pyx_v_lensource));
+ 
+   /* "renpy/gl/glenviron_shader.pyx":326
+  *     handle = glCreateShaderObjectARB(kind)

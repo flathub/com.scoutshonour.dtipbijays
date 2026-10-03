@@ -1,0 +1,13 @@
+error: passing argument 3 of ‘fribidi_log2vis’ from incompatible pointer type
+
+--- module/renpybidicore.c.orig	2013-06-07 23:38:29.000000000 -0300
++++ module/renpybidicore.c
+@@ -5,7 +5,7 @@
+ /* defined in. */
+ void *alloca(size_t size);
+ 
+-PyObject *renpybidi_log2vis(PyObject *s, int *direction) {
++PyObject *renpybidi_log2vis(PyObject *s, FriBidiParType *direction) {
+     char *src;
+     int size;
+     FriBidiChar *srcuni;

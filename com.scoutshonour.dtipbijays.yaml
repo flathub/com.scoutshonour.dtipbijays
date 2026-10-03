@@ -1,14 +1,8 @@
 app-id: com.scoutshonour.dtipbijays
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '23.08'
+runtime-version: &runtime-version '26.08'
 sdk: org.freedesktop.Sdk
 command: dtipb.sh
-add-extensions:
-  org.freedesktop.Platform.ffmpeg-full:
-    directory: lib/ffmpeg
-    add-ld-path: '.'
-    version: *runtime-version
-    autodelete: false
 finish-args:
   - --socket=x11
   - --share=ipc
@@ -20,12 +14,21 @@ build-options:
   env:
     PREFIX: /app
 
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/doc
+  - /share/man
+  - '*.la'
+  - '*.a'
+
 modules:
   - shared-modules/glew/glew.json
   - shared-modules/glu/glu-9.json
-  - shared-modules/python2.7/python-2.7.json
+  - shared-modules/pygame/pygame1-python2.json
+  - shared-modules/SDL/sdl12-compat.json
 
-  - name: python3-cython
+  - name: cython
     buildsystem: simple
     build-commands:
       - pip2 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} "cython" --no-build-isolation
@@ -34,22 +37,18 @@ modules:
         url: https://files.pythonhosted.org/packages/3f/d6/9eed523aeaca42acbaa3e6d3850edae780dc7f8da9df1bf6a2ceb851839c/Cython-0.29.36-py2.py3-none-any.whl
         sha256: 95bb13d8be507425d03ebe051f90d4b2a9fdccc64e4f30b35645fdb7542742eb
     cleanup:
-    - '*'
-
-  - shared-modules/pygame/pygame-1.9.6.json
+      - '*'
 
   - name: ffmpeg-avresample
     cleanup:
-      - /lib/pkgconfig
-      - /include
-      - /share/doc
+      - /bin
       - /share/ffmpeg
-      - /share/man
     config-opts:
       - --enable-shared
       - --disable-static
       - --enable-gnutls
       - --enable-avresample
+      - --disable-htmlpages
     sources:
       - type: archive
         url: https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
@@ -89,22 +88,18 @@ modules:
           - patch-module_ffdecode.c.patch
           - patch-renpy_gl_gltexture.pyx.patch
           - patch-renpy_display_render.pyx.patch
+          - patch-renpy-fribidi.patch
+          - patch-renpy-gl-shader.patch
         strip-components: 0
 
   - name: dtipbijays
     buildsystem: simple
     build-commands:
-      - mkdir -p /app/lib/ffmpeg
-      - cp -R game "${FLATPAK_DEST}/game"
-      - cp -R common ${FLATPAK_DEST}/common
-      - cp -R game ${FLATPAK_DEST}/game
-      - cp -R lib ${FLATPAK_DEST}/lib
-      - cp -R renpy ${FLATPAK_DEST}/renpy
-      - install -Dm755 "don't take it personally, babe.py" "${FLATPAK_DEST}/don't take it personally, babe.py"
-      - install -Dm755 launcher.sh ${FLATPAK_DEST}/bin/dtipb.sh
-      - install -Dm644 README.html ${FLATPAK_DEST}/README.html
-      - install -Dm644 com.scoutshonour.dtipbijays.metainfo.xml ${FLATPAK_DEST}/share/metainfo/com.scoutshonour.dtipbijays.metainfo.xml
-      - install -Dm644 com.scoutshonour.dtipbijays.desktop ${FLATPAK_DEST}/share/applications/com.scoutshonour.dtipbijays.desktop
+      - cp -a game common "${FLATPAK_DEST}/"
+      - install -Dm755 launcher.sh "${FLATPAK_DEST}/bin/dtipb.sh"
+      - install -Dm644 README.html "${FLATPAK_DEST}/share/dtipbijays/README.html"
+      - install -Dm644 com.scoutshonour.dtipbijays.metainfo.xml "${FLATPAK_DEST}/share/metainfo/com.scoutshonour.dtipbijays.metainfo.xml"
+      - install -Dm644 com.scoutshonour.dtipbijays.desktop "${FLATPAK_DEST}/share/applications/com.scoutshonour.dtipbijays.desktop"
       # Copied from chibitracker Flatpak, note that the original dtipbijays is 128x128 despite what the name says
       - |
         ICON_IN='game/icon256x256.png'
@@ -122,7 +117,7 @@ modules:
       - type: script
         dest-filename: launcher.sh
         commands:
-          - renpy /app/game "$@"
+          - exec python2 /app/share/renpy/renpy.py /app/game "$@"
       - type: file
         path: com.scoutshonour.dtipbijays.metainfo.xml
       - type: file
